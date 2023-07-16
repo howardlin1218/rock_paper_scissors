@@ -1,0 +1,79 @@
+html {
+    background: url(images/crumpled3.jpg) bottom center;
+    background-size: cover;
+}
+
+.div1 {
+    margin-top: 50px;
+    display: flex;
+    flex-grow: 0;
+    border-radius: 12px;
+    justify-content: center;
+}
+
+.optionButton {
+    height: 200px;
+    width: 400px;
+    margin-left: 10px; 
+    border-radius: 12px;
+    justify-content: center;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+}
+
+.displayMsg {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    border-radius: 12px;
+    font-size: 50px;
+}
+
+.round {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    border-radius: 12px;
+    font-size: 50px;
+}
+
+img {
+    height: 200px;
+    width: 400px;
+    border-radius: 12px;
+    border-color: black;
+    border-style:ridge;
+}
+
+.div3 {
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;
+}
+
+.play {
+    height: 100px;
+    width: 200px;
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.play img {
+    height: 100px;
+    width: 200px;
+    border-radius: 12px;
+    border-color: transparent;
+    background-color: transparent;
+}
