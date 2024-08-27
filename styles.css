@@ -19,6 +19,7 @@ html {
     justify-content: center;
     border-color: transparent;
     background-color: transparent;
+    cursor: pointer;
 }
 
 h2 {
@@ -76,4 +77,5 @@ img {
     border-radius: 12px;
     border-color: transparent;
     background-color: transparent;
+    cursor: pointer;
 }

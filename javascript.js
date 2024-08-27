@@ -1,7 +1,5 @@
 function getComputerChoice() {
-    let min = Math.ceil(0);//0
-    let max = Math.floor(3);//3
-    return Math.floor(Math.random() * (max-min)+min);
+    return Math.floor(Math.random() * 3);
 }
 
 let userScore = 0;
@@ -17,15 +15,13 @@ function playerSelectionRandom(playerChoice, computerChoice){
         rps = "rock";
     }
     
-    let playerChoiceNum = playerChoice;
-    
-    if(computerChoice == 0 && playerChoiceNum == 2){//rock beats scissors (user wins)
+    if(computerChoice == 0 && playerChoice == 2){//rock beats scissors (user wins)
         userScore += 1;
         if(userScore == 5){
             return ("Rock beats Scissors! You win!");
         } 
         return ("You win! Rock beats Scissors!");
-    } else if (computerChoice == 2 && playerChoiceNum == 0){//rock beats scissors (computer wins)
+    } else if (computerChoice == 2 && playerChoice == 0){//rock beats scissors (computer wins)
         compScore += 1;
         if(compScore == 5){
             return ("Rock beats Scissors! Computer wins!");
@@ -33,13 +29,13 @@ function playerSelectionRandom(playerChoice, computerChoice){
         return ("You lose! Rock beats Scissors!");
     }
 
-    if(computerChoice == 1 && playerChoiceNum == 2){//paper beats rock(computer wins)
+    if(computerChoice == 1 && playerChoice == 2){//paper beats rock(computer wins)
         compScore += 1;
         if(compScore == 5){
             return ("Paper beats Rock! Computer wins!");
         }
         return ("You lose! Paper beats Rock!");
-    } else if (computerChoice == 2 && playerChoiceNum == 1){//paper beats to rock (user wins)
+    } else if (computerChoice == 2 && playerChoice == 1){//paper beats rock (user wins)
         userScore += 1;
         if(userScore == 5){
             return ("Paper beats Rock! You win!");
@@ -47,13 +43,13 @@ function playerSelectionRandom(playerChoice, computerChoice){
         return ("You win! Paper beats Rock!");
     }
     
-    if(computerChoice == 0 && playerChoiceNum == 1){//scissors beats paper (computer wins)
+    if(computerChoice == 0 && playerChoice == 1){//scissors beats paper (computer wins)
         compScore += 1;
         if(compScore == 5){
             return ("Scissors beats Paper! Computer wins!");
         }
         return ("You lose! Scissors beats Paper!");
-    } else if (computerChoice == 1 && playerChoiceNum == 0){//scissors beats paper (user wins)
+    } else if (computerChoice == 1 && playerChoice == 0){//scissors beats paper (user wins)
         userScore += 1;
         if(userScore == 5){
             return ("Scissors beats Paper! You win!");
@@ -61,7 +57,7 @@ function playerSelectionRandom(playerChoice, computerChoice){
         return ("You win! Scissors beats Paper!");
     }
 
-    if(computerChoice == playerChoiceNum){
+    if(computerChoice == playerChoice){
         return ("Tie! Both went " + rps + ".");
     }
 }
@@ -88,18 +84,6 @@ function printMatchRandom(player, computer){
     return (rps1 + "(YOU) vs. " + rps2 + "(PC)");
 }
 
-// display round: 0 (only when page reloaded or first loaded)
-const div2 = document.querySelector(".div2");
-function displayRoundNum(string){
-    const displayRound = document.createElement("p");
-    displayRound.textContent = string;
-    displayRound.classList.add("round");
-    div2.appendChild(displayRound);
-}
-
-displayRoundNum("current round: 0 | score: 0:0");
-//
-
 // reload function
 function reloadPage (){
     window.location.reload();
@@ -121,22 +105,22 @@ function playAgain(){
 //
 
 // display function
+const div2 = document.querySelector(".div2");
 function display (string){
     const displayResult = document.createElement("p");
     displayResult.textContent = string;
     displayResult.classList.add("displayMsg");
     div2.appendChild(displayResult);
 }
+display("current round: 0 | score: 0:0");
 
 // player selections
 function selectRock(){
     ++roundNum;
     const divs = document.querySelectorAll(".displayMsg");
-    const roundDisplayZero = document.querySelectorAll(".round");
-    roundDisplayZero.forEach(round => round.remove());
     divs.forEach(div => div.remove());
     let compChoice = getComputerChoice();
-    roundResults = playerSelectionRandom(0, compChoice);
+    roundResults = playerSelectionRandom(2, compChoice);
     display("current round: " + roundNum + " | score: " + userScore + ":" + compScore);
     display(printMatchRandom(2, compChoice));
     display(roundResults);
@@ -149,11 +133,9 @@ function selectRock(){
 function selectPaper(){
     ++roundNum;
     const divs = document.querySelectorAll(".displayMsg");
-    const roundDisplayZero = document.querySelectorAll(".round");
-    roundDisplayZero.forEach(round => round.remove());
     divs.forEach(div => div.remove());
     let compChoice = getComputerChoice();
-    roundResults = playerSelectionRandom(0, compChoice);
+    roundResults = playerSelectionRandom(1, compChoice);
     display("current round: " + roundNum + " | score: " + userScore + ":" + compScore);
     display(printMatchRandom(1, compChoice));
     display(roundResults);
@@ -166,8 +148,6 @@ function selectPaper(){
 function selectScissors(){
     ++roundNum;
     const divs = document.querySelectorAll(".displayMsg");
-    const roundDisplayZero = document.querySelectorAll(".round");
-    roundDisplayZero.forEach(round => round.remove());
     divs.forEach(div => div.remove());
     let compChoice = getComputerChoice();
     roundResults = playerSelectionRandom(0, compChoice);
@@ -179,7 +159,6 @@ function selectScissors(){
         playAgain();
     }
 }
-//
 
 // buttons 
 const div = document.querySelector(".div1");
@@ -215,10 +194,9 @@ function disableButton (){
 //
 
 // button functionalities
-button1.addEventListener("click", selectRock);
-button2.addEventListener("click", selectPaper);
-button3.addEventListener("click", selectScissors);
+button1.addEventListener("mousedown", selectRock);
+button2.addEventListener("mousedown", selectPaper);
+button3.addEventListener("mousedown", selectScissors);
 
 playButton.addEventListener("click", reloadPage);
 //
-
